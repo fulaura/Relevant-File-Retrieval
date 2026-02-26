@@ -1,0 +1,12 @@
+langchain
+langchain-ollama
+psycopg[binary]
+python-docx
+PyMuPDF
+streamlit
+PySide6
+pytesseract
+mss
+keyboard
+google-genai
+Pillow
