@@ -27,7 +27,10 @@ class DesktopAssistantConfig:
     hotkey: str = "ctrl+alt+space"
     screenshot_dir: Path = Path(tempfile.gettempdir()) / "Relevant_doc_retriever" / "screenshots"
     tesseract_cmd: str | None = None
-    gemini_model: str = "gemini-3-pro-preview"
+    deepseek_api_key: str = "sk-0dcc4b30bcce4439ac37487bc19b5bfc"
+    deepseek_base_url: str = "https://api.deepseek.com"
+    deepseek_model: str = "deepseek-flash"
+    gemini_model: str = "gemini-1.5-flash"
     gemini_thinking_level: str | None = None
     gemini_safety_threshold: str = "BLOCK_NONE"
     gemini_enable_google_search: bool = False
@@ -41,6 +44,9 @@ class DesktopAssistantConfig:
         defaults = cls()
         screenshot_dir = Path(os.getenv("ASSISTANT_SCREENSHOT_DIR", defaults.screenshot_dir))
         tesseract_cmd = os.getenv("TESSERACT_CMD")
+        deepseek_api_key = os.getenv("DEEPSEEK_API_KEY", defaults.deepseek_api_key)
+        deepseek_base_url = os.getenv("DEEPSEEK_BASE_URL", defaults.deepseek_base_url)
+        deepseek_model = os.getenv("DEEPSEEK_MODEL", defaults.deepseek_model)
         gemini_model = os.getenv("GEMINI_MODEL", defaults.gemini_model)
         thinking_level = _parse_thinking_level(os.getenv("GEMINI_THINKING_LEVEL"), defaults.gemini_thinking_level)
         safety_threshold = os.getenv("GEMINI_SAFETY_THRESHOLD", defaults.gemini_safety_threshold)
@@ -57,6 +63,9 @@ class DesktopAssistantConfig:
             hotkey=hotkey,
             screenshot_dir=screenshot_dir,
             tesseract_cmd=tesseract_cmd,
+            deepseek_api_key=deepseek_api_key,
+            deepseek_base_url=deepseek_base_url,
+            deepseek_model=deepseek_model,
             gemini_model=gemini_model,
             gemini_thinking_level=thinking_level,
             gemini_safety_threshold=safety_threshold,

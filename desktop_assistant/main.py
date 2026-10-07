@@ -9,7 +9,7 @@ from PySide6 import QtCore, QtWidgets
 
 try:
     from .config import DesktopAssistantConfig, load_config
-    from .gemini_client import send_chat_message, start_chat
+    from .deepseek_client import send_chat_message, start_chat
     from .hotkey_service import HotkeyController
     from .ocr_service import OCRService
     from .overlay import ChatDialog, ResultsOverlay
@@ -20,7 +20,7 @@ except ImportError:  # pragma: no cover - fallback for direct execution
         if str(project_root) not in sys.path:
             sys.path.insert(0, str(project_root))
         from desktop_assistant.config import DesktopAssistantConfig, load_config
-        from desktop_assistant.gemini_client import send_chat_message, start_chat
+        from desktop_assistant.deepseek_client import send_chat_message, start_chat
         from desktop_assistant.hotkey_service import HotkeyController
         from desktop_assistant.ocr_service import OCRService
         from desktop_assistant.overlay import ChatDialog, ResultsOverlay

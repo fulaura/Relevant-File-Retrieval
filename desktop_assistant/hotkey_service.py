@@ -8,7 +8,7 @@ from typing import Callable
 import keyboard
 
 from desktop_assistant.config import DesktopAssistantConfig
-from . import gemini_client
+from . import deepseek_client
 from .ocr_service import OCRService
 from .retrieval import RetrievalEngine
 from .screenshot import capture_fullscreen
@@ -66,7 +66,7 @@ class HotkeyController:
                 self.status_callback("No text detected in screenshot.")
                 return
             self.status_callback("Building search query...")
-            query = gemini_client.build_query(text, self.config)
+            query = deepseek_client.build_query(text, self.config)
             self.status_callback("Searching documents...")
             docs = self.retriever.search(query)
             self.overlay_callback(text, docs)
